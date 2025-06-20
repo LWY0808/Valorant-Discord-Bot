@@ -1,21 +1,31 @@
 const { EmbedBuilder } = require('discord.js');
 const axios = require('axios');
-const { HENRIK_API_KEY } = process.env.HENRIK_API_KEY;
-axios.defaults.headers.common['Authorization'] = HENRIK_API_KEY;
+const API_KEY = process.env.HENRIK_API_KEY
+// axios.defaults.headers.common['Authorization'] = process.env.HENRIK_API_KEY
 const { random } = require('../utils/random.js');
 
 // 获取玩家数据
 async function getPlayerData(username, tag) {
     try {
         const accountResponse = await axios.get(
-            `https://api.henrikdev.xyz/valorant/v1/account/${username}/${tag}`
+            `https://api.henrikdev.xyz/valorant/v1/account/${username}/${tag}`,
+        {
+            headers: {
+                Authorization: API_KEY
+            }
+        }
         );
         if (accountResponse.data.status !== 200) return null;
 
         const account = accountResponse.data.data;
 
         const matchResponse = await axios.get(
-            `https://api.henrikdev.xyz/valorant/v3/matches/${account.region}/${username}/${tag}?size=1`
+            `https://api.henrikdev.xyz/valorant/v3/matches/${account.region}/${username}/${tag}?size=1`,
+        {
+            headers: {
+                Authorization: API_KEY
+            }
+        }
         );
         if (matchResponse.data.status !== 200 || !matchResponse.data.data || matchResponse.data.data.length === 0)
             return null;

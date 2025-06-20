@@ -2,8 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 const playersPath = path.join(__dirname, '../data/players.json');
-const { HENRIK_API_KEY } = require('../config.json');
-axios.defaults.headers.common['Authorization'] = HENRIK_API_KEY;
+const API_KEY = process.env.HENRIK_API_KEY
 
 module.exports = {
     name: 'link',
@@ -36,7 +35,13 @@ module.exports = {
         }
         // 验证账号是否存在
         try {
-            const res = await axios.get(`https://api.henrikdev.xyz/valorant/v1/account/${username}/${tag}`);
+            const res = await axios.get(`https://api.henrikdev.xyz/valorant/v1/account/${username}/${tag}`,
+                {
+                    headers: {
+                        Authorization: API_KEY
+                    }
+                }
+            );
             if (res.data.status !== 200) {
                 return message.reply('❌ 未找到该VALORANT账号，请检查拼写。');
             }

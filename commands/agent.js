@@ -7,6 +7,7 @@ module.exports = {
     description: '查询最近一场游戏使用的特工和战绩并进行嘲讽',
     
     async execute(message, args) {
+        console.log('AGENT COMMAND TRIGGERED', args);
         if (args.length < 1) {
             message.reply('用法: `!agent <username#tag>` (例子： `!agent 笨蛋你进错洞了啦#70808`)');
             return;

@@ -1,6 +1,5 @@
 const axios = require('axios');
-const { HENRIK_API_KEY } = process.env.HENRIK_API_KEY;
-axios.defaults.headers.common['Authorization'] = HENRIK_API_KEY;
+const API_KEY = process.env.HENRIK_API_KEY
 
 const cache = new Map();
 const CACHE_TTL = 60 * 1000; // 60 秒
@@ -17,12 +16,23 @@ async function getAverageKD(username, tag) {
         }
     }
     try {
-        const accountRes = await axios.get(`https://api.henrikdev.xyz/valorant/v1/account/${username}/${tag}`);
+        const accountRes = await axios.get(`https://api.henrikdev.xyz/valorant/v1/account/${username}/${tag}`,
+            {
+                headers: {
+                    Authorization: API_KEY
+                }
+            }
+        );
         if (accountRes.data.status !== 200) return null;
         const region = accountRes.data.data.region;
 
         const matchRes = await axios.get(
-            `https://api.henrikdev.xyz/valorant/v3/matches/${region}/${username}/${tag}?size=10`
+            `https://api.henrikdev.xyz/valorant/v3/matches/${region}/${username}/${tag}?size=10`,
+            {
+                headers: {
+                    Authorization: API_KEY
+                }
+            }
         );
         if (matchRes.data.status !== 200 || !matchRes.data.data) return null;
 
