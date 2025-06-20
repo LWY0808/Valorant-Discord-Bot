@@ -130,6 +130,18 @@ const agentUUID = {
     "Vyse": "efba5359-4016-a1e5-7626-b1ae76895940",
     "Waylay": "df1cb487-4902-002e-5c17-d28e83e78588"
 };
+
+const sassyReplies = [
+    '❌ 无法找到该玩家的数据或最近游玩记录！你是不是太菜了，连系统都懒得记住你？',
+    '❌ 没查到你的数据，可能是你太无名，连官方都懒得记录你！',
+    '❌ 系统都找不到你的数据，是不是太菜被官方自动屏蔽了？',
+    '❌ 你的数据神秘消失了，菜到连服务器都不想理你！',
+    '❌ 查无此人！可能你已经菜到被宇宙遗忘了。',
+    '❌ 你的战绩就像你的人缘——无人问津。',
+    '❌ 抱歉，系统表示：这种菜鸡我不配记录。',
+    '❌ 数据不存在，可能你玩的不是游戏，是折磨队友。',
+    // '❌ 没有找到数据，你可能只是个传说——“送分童话”。'
+];
   
   // 创建 Embed 信息
 function createAgentEmbed(username, tag, agent, message, matchData) {
@@ -166,5 +178,6 @@ module.exports = {
     getPlayerData,
     createAgentEmbed,
     generateSarcasticMessage,
-    agentUUID
+    agentUUID,
+    sassyReplies
 }

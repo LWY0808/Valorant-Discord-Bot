@@ -8,6 +8,7 @@ module.exports = {
     name: 'link',
     description: '绑定你的VALORANT账号，格式：!link NAME#TAG',
     async execute(message, args) {
+        console.log('LINK COMMAND TRIGGERED', args);
         if (!args[0] || !args[0].includes('#')) {
             return message.reply('❌ 格式错误，请使用：!link NAME#TAG');
         }

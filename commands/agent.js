@@ -1,6 +1,6 @@
 const { EmbedBuilder } = require("discord.js");
-const { getPlayerData, generateSarcasticMessage, createAgentEmbed, agentUUID } = require("../utils/agent.js");
-const { agentMessages } = require("../messages/agentMessages.js")
+const { getPlayerData, generateSarcasticMessage, createAgentEmbed, sassyReplies } = require("../utils/agent.js");
+const { random } = require('../utils/random.js');
 
 module.exports = {
     name: 'agent',
@@ -13,7 +13,8 @@ module.exports = {
             return;
         }
 
-        const [username, tag] = args[0].split('#');
+        const input = args.join(' ');
+        const [username, tag] = input.split('#');
         if (!username || !tag) {
             message.reply('请提供正确的格式: `username#tag`');
             return;
@@ -23,17 +24,18 @@ module.exports = {
 
         try {
             const data = await getPlayerData(username, tag);
-            if (!data) {
-                loadingMessage.edit('❌ 无法找到该玩家的数据或最近游玩记录!');
+            if (!data || data.playerData === undefined) {
+                loadingMessage.edit(random(sassyReplies));
                 return;
             }
 
             const agent = data.playerData.character;
             const stats = data.playerData.stats;
             const teamResult = data.match.teams[data.playerData.team.toLowerCase()];
+
             const sarcasticMessage = generateSarcasticMessage(
                 agent,
-                teamResult.has_won,
+                teamResult?.has_won ?? false,
                 stats.kills,
                 stats.deaths,
                 stats.assists

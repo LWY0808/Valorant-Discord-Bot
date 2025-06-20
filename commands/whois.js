@@ -6,6 +6,7 @@ module.exports = {
     name: 'whois',
     description: '查询指定用户已绑定的VALORANT账号，格式：!whois @某人',
     async execute(message, args) {
+        console.log('WHOIS COMMAND TRIGGERED', args);
         if (!args[0] || !message.mentions.users.size) {
             return message.reply('❌ 格式错误，请 @ 你要查询的用户。例如：!whois @某人');
         }

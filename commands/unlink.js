@@ -6,6 +6,7 @@ module.exports = {
     name: 'unlink',
     description: '解绑你的VALORANT账号',
     async execute(message) {
+        console.log('UNLINK COMMAND TRIGGERED', args);
         let players = [];
         try {
             if (fs.existsSync(playersPath)) {

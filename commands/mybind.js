@@ -6,6 +6,7 @@ module.exports = {
     name: 'mybind',
     description: '查询你已绑定的VALORANT账号',
     async execute(message) {
+        console.log('MYBIND COMMAND TRIGGERED', args);
         let players = [];
         try {
             if (fs.existsSync(playersPath)) {

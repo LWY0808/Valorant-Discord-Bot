@@ -7,6 +7,7 @@ module.exports = {
     description: '生成最近10场比赛的菜鸡排行榜（KDA 越低排名越高）',
 
     async execute(message) {
+        console.log('LEADERBOARD COMMAND TRIGGERED', args);
         const loadingMsg = await message.reply('📊 正在拉取所有选手的最近 10 场比赛数据，请稍等...');
 
         const results = [];

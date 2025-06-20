@@ -7,6 +7,7 @@ module.exports = {
     name: "predict",
     description: "玄学嘴臭预测一下你今天的命运",
     execute(message) {
+        console.log('PREDICT COMMAND TRIGGERED', args);
         const { target, personalityKey, style, roast, grade } = getPredict(message);
 
         const embed = new EmbedBuilder()

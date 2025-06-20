@@ -12,6 +12,7 @@ module.exports = {
     description: '生成最近 10 场比赛的菜鸡排行榜图像版 🖼️',
 
     async execute(message) {
+        console.log('LEADERBOARDIMG COMMAND TRIGGERED', args);
         const loadingMsg = await message.reply('📸 正在生成排行榜图片，请稍等...');
 
         let players;

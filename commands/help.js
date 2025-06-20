@@ -5,6 +5,7 @@ module.exports = {
     description: '显示所有可用指令及用法说明',
 
     execute(message) {
+        console.log('HELP COMMAND TRIGGERED', args);
         const helpEmbed = new EmbedBuilder()
             .setTitle('🤖 Valorant 嘲讽机器人指令列表')
             .setDescription('根据你最近的比赛数据来进行毒舌评价，让你时刻保持清醒 😈')
