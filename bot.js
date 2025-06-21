@@ -7,7 +7,7 @@ const axios = require('axios');
 axios.defaults.headers.common['Authorization'] = process.env.HENRIK_API_KEY;
 const cron = require('node-cron');
 const { runCrownTask } = require('./tasks/crownTask.js');
-const { setBotClient } = require('./utils/sageApiCall.js');
+const { setBotClient } = require('./utils/safeApiCall.js');
 
 const client = new Client({
     intents: [

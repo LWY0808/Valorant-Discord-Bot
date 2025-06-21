@@ -3,6 +3,7 @@ const axios = require('axios');
 const API_KEY = process.env.HENRIK_API_KEY
 // axios.defaults.headers.common['Authorization'] = process.env.HENRIK_API_KEY
 const { random } = require('../utils/random.js');
+const { logError } = require('../utils/errorLogger');
 
 // 获取玩家数据
 async function getPlayerData(username, tag) {
@@ -43,6 +44,7 @@ async function getPlayerData(username, tag) {
             match
         };
     } catch (error) {
+        logError(error, 'Agent API');
         console.error('Error fetching player data:', error.response?.data || error.message);
         return null;
     }

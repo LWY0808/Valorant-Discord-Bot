@@ -10,7 +10,7 @@ module.exports = {
     description: '强制执行菜鸡勋章系统，评选出当天最菜的玩家 👑',
 
     async execute(message) {
-        console.log('FORCECROWN COMMAND TRIGGERED', args);
+        console.log('FORCECROWN COMMAND TRIGGERED');
         const loadingMsg = await message.reply('🚨 正在强制执行菜鸡勋章系统，请稍等...');
 
         let players;

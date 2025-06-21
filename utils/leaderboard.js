@@ -63,6 +63,7 @@ async function getAverageKD(username, tag) {
         cache.set(cacheKey, { data: result, timestamp: now });
         return result;
     } catch (err) {
+        logError(error, 'Leaderboard API');
         console.error(`获取 ${username}#${tag} 的数据失败：`, err.message);
         return null;
     }

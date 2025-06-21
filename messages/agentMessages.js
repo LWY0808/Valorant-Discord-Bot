@@ -123,4 +123,4 @@ const agentMessages = {
     ]
 }
 
-module.exports = agentMessages;
+module.exports = {agentMessages}; 
